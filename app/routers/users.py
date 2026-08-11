@@ -1,16 +1,12 @@
 from fastapi import APIRouter, HTTPException
-
 from app.schemas.users import CreateUserRequest, UserResponse
 
-
 router = APIRouter(prefix="/users", tags=["users"])
-
 
 _USERS = {
     1: {"id": 1, "name": "Alice", "email": "alice@example.com"},
     2: {"id": 2, "name": "Bob", "email": "bob@example.com"},
 }
-
 
 @router.get("/{user_id}", response_model=UserResponse, summary="Fetch a user by ID")
 async def get_user(user_id: int) -> UserResponse:
