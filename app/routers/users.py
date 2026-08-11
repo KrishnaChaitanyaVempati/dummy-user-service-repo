@@ -16,7 +16,6 @@ async def get_user(user_id: int) -> UserResponse:
         raise HTTPException(status_code=404, detail="User not found")
     return UserResponse(**user)
 
-
 @router.post("", response_model=UserResponse, summary="Create a user")
 async def create_user(payload: CreateUserRequest) -> UserResponse:
     """Create a new user from the posted request body."""
